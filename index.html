@@ -4,6 +4,19 @@
     <title>folly</title>
     <style>
         body {background-color: rgb(6, 6, 10);}
+        a {
+        color: yellow;
+        text-decoration: none;
+        text-transform: lowercase;
+        }
+        .random {
+        aspect-ratio: 1 / 1;
+        width: 47.2em;
+        background: #191414;
+        color: #fff;
+        cursor: pointer;
+        
+        }
         .playlists {
             display: flex;
             flex-wrap: wrap;
@@ -14,7 +27,7 @@
 
         .playlist {
         aspect-ratio: 1 / 1;
-        width: 25%;
+        width: 47.2em;
         background: #191414;
         color: #fff;
         cursor: pointer;
@@ -30,6 +43,12 @@
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <div id="embed-iframe"></div>
     <script type="text/javascript">
+        fetch("stories.txt")
+        .then((res) => res.text())
+        .then((text) => {
+            console.log(text)
+        })
+        .catch((e) => console.error(e));
         window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const element = document.getElementById('embed-iframe');
         const options = {
@@ -40,16 +59,22 @@
             const callback = (EmbedController) => {
                 document.querySelectorAll('.playlist').forEach(
                 playlist => {
-                    playlist.addEventListener('click', () => {
+                    playlist.addEventListener('click', () => 
+                    {
+                    if (playlist.dataset.spotifyId == null)
+                    {
+
+                    }
                     EmbedController.loadUri(playlist.dataset.spotifyId)
-                    EmbedController.resume();
-                    EmbedController.play();
+                    EmbedController.resume()
+                    EmbedController.play()
                     });
                 })
             };
             IFrameAPI.createController(element, options, callback);
         };
     </script>
+    <a class="playlist" href='#'>randomize</a>
     <div class = "playlists">
         <!-- story #1 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebb3f0440006f18f7cabc497fc7" class="playlist" data-spotify-id="spotify:playlist:3yuMz35Grny22l6SA5GDTy"/>
         <!-- story #2 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebb589d4d42672b3ae8efac91aa" class="playlist" data-spotify-id="spotify:playlist:3j1aXssmFgpSsK71rNEfdg"/>
@@ -141,7 +166,6 @@
         <!-- story #88 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebbefaeec47f489dea8e74eda86" class="playlist" data-spotify-id="spotify:playlist:1tenZR8ikKbkOLGR6Ud7j8"/>
         <!-- story #89 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebbb5723267d991ad9b30396411" class="playlist" data-spotify-id="spotify:playlist:4LbtLdKRd3xXr9TUqN43r6"/>
         <!-- story #90 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebba73d6806892f57bbb7f82c2c" class="playlist" data-spotify-id="spotify:playlist:4KayOM0wieiphAGpfCewuQ"/>
-
     </div>
   </body>
 </html>
