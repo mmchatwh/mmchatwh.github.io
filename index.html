@@ -43,6 +43,7 @@
                     playlist.addEventListener('click', () => {
                     EmbedController.loadUri(playlist.dataset.spotifyId)
                     EmbedController.resume();
+                    EmbedController.play();
                     });
                 })
             };
