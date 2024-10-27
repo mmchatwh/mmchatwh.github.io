@@ -67,13 +67,13 @@
                     playlist.addEventListener('click', () => 
                     {
                     currentMix = playlist
-                    console.log(currentMix)
-                    if (currentMix.dataset == undefined)
+                    if (currentMix.hasAttribute('id'))
                     {
                         var random = Math.floor(Math.random() * 90) + 1
                         const mixes = document.querySelectorAll('.playlist')
                         currentMix = mixes[random]
                     }
+                    console.log(currentMix)
                     EmbedController.loadUri(currentMix.dataset.spotifyId)
                     EmbedController.resume()
                     EmbedController.play()
@@ -83,7 +83,7 @@
             IFrameAPI.createController(element, options, callback);
         };
     </script>
-    <a class="playlist" href='#'>randomize</a>
+    <a class="playlist" id="random" href='#'>randomize</a>
     <div class = "playlists">
         <!-- story #1 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebb3f0440006f18f7cabc497fc7" class="playlist" data-spotify-id="spotify:playlist:3yuMz35Grny22l6SA5GDTy"/>
         <!-- story #2 --> <input type="image" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000bebb589d4d42672b3ae8efac91aa" class="playlist" data-spotify-id="spotify:playlist:3j1aXssmFgpSsK71rNEfdg"/>
