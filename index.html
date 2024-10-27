@@ -68,6 +68,12 @@
                     {
                     currentMix = playlist
                     console.log(currentMix)
+                    if (currentMix.dataset == undefined)
+                    {
+                        var random = Math.floor(Math.random() * 90) + 1
+                        const mixes = document.querySelectorAll('.playlist')
+                        currentMix = mixes[random]
+                    }
                     EmbedController.loadUri(currentMix.dataset.spotifyId)
                     EmbedController.resume()
                     EmbedController.play()
