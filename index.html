@@ -43,12 +43,17 @@
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <div id="embed-iframe"></div>
     <script type="text/javascript">
+        var stories = []
+        var numStories = 90
+        var randomMix = 1
         fetch("stories.txt")
         .then((res) => res.text())
         .then((text) => {
-            console.log(text)
+            stories = text
+            numStories = text.length
         })
         .catch((e) => console.error(e));
+        console.log(stories)
         window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const element = document.getElementById('embed-iframe');
         const options = {
@@ -61,11 +66,13 @@
                 playlist => {
                     playlist.addEventListener('click', () => 
                     {
+                    currentMix = playlist.dataset.spotifyId
                     if (playlist.dataset.spotifyId == null)
                     {
-
+                        randomMix = Math.floor(Math.random() * numStories)+1
+                        currentMix = "spotify:playlist:" + randomMix + "\""
                     }
-                    EmbedController.loadUri(playlist.dataset.spotifyId)
+                    EmbedController.loadUri(currentMix)
                     EmbedController.resume()
                     EmbedController.play()
                     });
