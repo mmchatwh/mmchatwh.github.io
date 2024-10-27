@@ -41,7 +41,8 @@
                 document.querySelectorAll('.playlist').forEach(
                 playlist => {
                     playlist.addEventListener('click', () => {
-                    EmbedController.loadUri(playlist.dataset.spotifyId)
+                    EmbedController.loadUri(playlist.dataset.spotifyId),
+                    EmbedController.play();
                     });
                 })
             };
