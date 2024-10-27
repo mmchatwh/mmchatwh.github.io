@@ -67,14 +67,7 @@
                     playlist.addEventListener('click', () => 
                     {
                     currentMix = playlist
-                    if (playlist == null)
-                    {
-                        const choices = document.querySelectorAll(".playlist")
-                        console.print(choices)
-                        currentMix = choices[Math.floor(Math.random() * numStories)+1]
-                        currentMix = currentMix.dataset.spotifyId
-                        console.print(currentMix)
-                    }
+                    console.log(currentMix)
                     EmbedController.loadUri(currentMix.dataset.spotifyId)
                     EmbedController.resume()
                     EmbedController.play()
