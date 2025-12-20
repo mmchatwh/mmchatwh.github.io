@@ -2,9 +2,21 @@
 <html>
   <head>
     <title>void folly || arcade</title>
+    <style>
+      iframe {
+  height: 650px;
+  width: 650px;
+  resize: both;
+  overflow: auto;
+  display:block;
+}
+    </style>
 </head>
 <body>
-  <iframe src="https://archive.org/embed/arcade_balcube" width="640" height="448" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' name="arcade_window" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+  <div>
+    <iframe src="https://archive.org/embed/arcade_balcube" width="640" height="448" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' name="arcade_window" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+  </div>
+  <div>
   <a href="https://archive.org/embed/arcade_balcube" target="arcade_window">Balcube</a>
   <a href="https://archive.org/embed/arcade_marble" target="arcade_window">Marble Madness</a>
   <a href="https://archive.org/embed/arcade_outrun" target="arcade_window">Out Run</a>
@@ -15,4 +27,6 @@
   <a href="https://archive.org/embed/arcade_rsgun" target="arcade_window">Radiant Silvergun</a>
   <a href="https://archive.org/embed/arcade_wjammers" target="arcade_window">Windjammers</a>
   <a href="https://archive.org/embed/arcade_bgaregga" target="arcade_window">Battle Garegga</a>
+  </div>
+  
 </body>
