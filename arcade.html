@@ -4,30 +4,75 @@
     <title>void folly || arcade</title>
     <style>
       iframe {
-  height: 650px;
-  width: 650px;
-  resize: both;
-  overflow: auto;
-  display:block;
-  margin: auto;
-}
-    </style>
+        width: 640px;
+        height: 448px;
+        border: 0;
+        display:block;
+        margin: auto;
+      }
+      body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-image: url('assets/images/bck-grid.gif');
+    background-repeat: repeat;
+    }
+    a {
+      color:white;
+      background-color: transparent;
+      text-decoration: none;
+      margin: 8px;
+      font-size: 16px;
+    }
+
+  </style>
 </head>
 <body>
   <div>
-    <iframe src="https://archive.org/embed/arcade_balcube" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' name="arcade_window" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+    <iframe
+    id="arcade-frame"
+    src="https://archive.org/embed/arcade_balcube"  
+    name="arcade_window" 
+    frameborder="0" 
+    webkitallowfullscreen="true" 
+    mozallowfullscreen="true" 
+    allowfullscreen>
+    </iframe>
   </div>
-  <div style="margin: auto; text-align:center;">
-  <a href="https://archive.org/embed/arcade_balcube" target="arcade_window">Balcube</a>
-  <a href="https://archive.org/embed/arcade_marble" target="arcade_window">Marble Madness</a>
-  <a href="https://archive.org/embed/arcade_outrun" target="arcade_window">Out Run</a>
-  <a href="https://archive.org/embed/arcade_spf2t" target="arcade_window">Super Puzzle Fighter II Turbo</a>
-  <a href="https://archive.org/embed/arcade_dendego" target="arcade_window">Densha de GO!</a>
-  <a href="https://archive.org/embed/arcade_gbbchmp" target="arcade_window">Great Bishi Bashi Champ</a>
-  <a href="https://archive.org/embed/arcade_ridgerac" target="arcade_window">Ridge Racer</a>
-  <a href="https://archive.org/embed/arcade_rsgun" target="arcade_window">Radiant Silvergun</a>
-  <a href="https://archive.org/embed/arcade_wjammers" target="arcade_window">Windjammers</a>
-  <a href="https://archive.org/embed/arcade_bgaregga" target="arcade_window">Battle Garegga</a>
+  <div style="text-align:center;">
+  <a href="https://archive.org/embed/arcade_balcube" data-w="640" data-h="448" target="arcade_window">Balcube</a>
+  <a href="https://archive.org/embed/arcade_marble" data-w="672" data-h="480" target="arcade_window">Marble Madness</a>
+  <a href="https://archive.org/embed/arcade_outrun" data-w="640" data-h="448" target="arcade_window">Out Run</a>
+  <a href="https://archive.org/embed/arcade_spf2t" data-w="768" data-h="448" target="arcade_window">Super Puzzle Fighter II Turbo</a>
+  <a href="https://archive.org/embed/arcade_dendego" data-w="1024" data-h="800"target="arcade_window">Densha de GO!</a>
+  <a href="https://archive.org/embed/arcade_gbbchmp" data-w="1140" data-h="960" target="arcade_window">Great Bishi Bashi Champ</a>
+  <a href="https://archive.org/embed/arcade_ridgerac" data-w="1140" data-h="960" target="arcade_window">Ridge Racer</a>
+  <a href="https://archive.org/embed/arcade_rsgun" data-w="704" data-h="448" target="arcade_window">Radiant Silvergun</a>
+  <a href="https://archive.org/embed/arcade_wjammers" data-w="640" data-h="448" target="arcade_window">Windjammers</a>
+  <a href="https://archive.org/embed/arcade_bgaregga" data-w="480" data-h="640" target="arcade_window">Battle Garegga</a>
   </div>
+  <script>
+    var frame = document.getElementById('arcade-frame');
+
+    function applySize(w, h) {
+      var maxW = Math.min(900, window.innerWidth * 0.92);
+      frame.style.width  = Math.round(w) + 'px';
+      frame.style.height = Math.round(h) + 'px';
+    }
+
+    document.querySelectorAll('a[target="arcade_window"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var w = parseInt(a.dataset.w, 10);
+        var h = parseInt(a.dataset.h, 10);
+        if (w && h) applySize(w, h);
+      });
+    });
+c
+    applySize(640, 480);
+  </script>
   
 </body>

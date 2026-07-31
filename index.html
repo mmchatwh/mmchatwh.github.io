@@ -2,7 +2,46 @@
 <html>
   <head>
     <title>void folly</title>
+    <style>
+      body {
+        background-image: url('assets/images/trees.png');
+        background-repeat: repeat;
+      }
+
+      a:link {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: pink;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      .vertical-links a {
+        display: block;
+        margin-bottom: 32px;
+        font-size: 48px;
+        text-align: center;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+    </style>
 </head>
 <body>
-  <a href="arcade.html">arcade</a>
+  <div class="vertical-links">
+    <a href="arcade.html">arcade</a>
+    <a href="stories.html">playlists</a>
+  </div>
 </body>
